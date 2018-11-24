@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zqu.yiban.mapper.ClassesCourseMapper">
+	<!-- 添加 -->
+	<insert id="insert" parameterType="classesCourse">
+		insert into classes_course
+		(classes_id, content, x, y, len, weeks)
+		values
+		(#{classesId}, #{content}, #{x}, #{y}, #{len}, #{weeks})
+	</insert>
+	<!-- 删除 -->
+	<delete id="delete">
+		delete from classes_course where ${key} = #{value}
+	</delete>
+	<!-- 修改 -->
+	<update id="update" parameterType="classesCourse">
+		update classes_course
+		set classes_id = #{classesId},content=#{content},x=#{x},y=#{y},len=#{len},weeks=#{weeks}
+		where id = #{id}
+	</update>
+	<!-- 查询对象 -->
+	<select id="get" resultType="classesCourse">
+		select * from classes_course where ${key} = #{value}
+	</select>
+	<!-- 查询多个对象 -->
+	<select id="list" resultType="classesCourse">
+		select * from classes_course where ${key} = #{value}
+	</select>
+
+</mapper>

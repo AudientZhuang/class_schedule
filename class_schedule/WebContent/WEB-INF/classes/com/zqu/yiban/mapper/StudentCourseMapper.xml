@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zqu.yiban.mapper.StudentCourseMapper">
+	<!-- 添加 -->
+	<insert id="insert" parameterType="studentCourse">
+		insert into student_course
+		(student_id, content, x, y, len, weeks, classes_course_id)
+		values
+		(#{studentId}, #{content}, #{x}, #{y}, #{len}, #{weeks}, #{classes_course_id})
+	</insert>
+	<!-- 删除 -->
+	<delete id="delete">
+		delete from student_course where ${key} = #{value}
+	</delete>
+	<!-- 修改 -->
+	<update id="update" parameterType="studentCourse">
+		update student_course
+		set student_id = #{studentId}, content = #{content}, x = #{x}, y = #{y}, len = #{len}, weeks = #{weeks}, classes_course_id
+		where id = #{id}
+	</update>
+	<!-- 查询单个对象 -->
+	<select id="get" resultType="studentCourse">
+		select * from student_course where ${key} = #{value}
+	</select>
+	<!-- 查询多个对象 -->
+	<select id="list" resultType="studentCourse">
+		select * from student_course where ${key} = #{value}
+	</select>
+</mapper>

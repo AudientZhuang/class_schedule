@@ -6,7 +6,7 @@
 		insert into student_course
 		(student_id, content, x, y, len, weeks, classes_course_id)
 		values
-		(#{studentId}, #{content}, #{x}, #{y}, #{len}, #{weeks}, #{classes_course_id})
+		(#{studentId}, #{content}, #{x}, #{y}, #{len}, #{weeks}, #{classesCourseId})
 	</insert>
 	<!-- 删除 -->
 	<delete id="delete">

@@ -15,4 +15,8 @@ public interface StudentCourseService {
 	 * @throws Exception
 	 */
 	public List<StudentCourse> listStudentCourse(int studentId) throws Exception;
+
+	public Integer delStudentCourse(Integer studentId);
+
+	public Integer addStudentCourse(StudentCourse studentCourse);
 }

@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zqu.yiban.common.AssertThrowUtil;
 import com.zqu.yiban.dto.Course;
@@ -150,4 +152,28 @@ public class CourseController {
 		}
 	}
 	
+	@RequestMapping("/addCourse.do")
+	public String addCourse(@RequestParam("courseData") String courseData) {
+		
+		List<StudentCourse> studentCourses= JSON.parseArray(courseData, StudentCourse.class);
+		
+		if(studentCourses != null && studentCourses.size() > 0) {
+			//从studentCourses中获取当前用户的ID
+			Integer studentId = studentCourses.get(0).getStudentId();
+			//把学生添加的课程全部删除了
+			if(studentCourseService.delStudentCourse(studentId) == null)
+				return "redirect:/listCourse.do";
+			
+			//增加学生课程
+			for(StudentCourse studentCourse: studentCourses) {
+				//添加学生课程到数据库
+				Integer num = studentCourseService.addStudentCourse(studentCourse);
+			}
+		}
+		return "redirect:/listCourse.do";
+	}
 }
+
+
+
+

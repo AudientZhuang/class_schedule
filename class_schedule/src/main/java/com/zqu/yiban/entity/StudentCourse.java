@@ -10,7 +10,7 @@ public class StudentCourse {
 	private int y;	//坐标y
 	private int len;	//课程节数
 	private String weeks;	//上课周数
-	private int classesCourseId;	//被覆盖的班级课程的id
+	private Integer classesCourseId;	//被覆盖的班级课程的id
 	public int getId() {
 		return id;
 	}
@@ -53,10 +53,10 @@ public class StudentCourse {
 	public void setWeeks(String weeks) {
 		this.weeks = weeks;
 	}
-	public int getClassesCourseId() {
+	public Integer getClassesCourseId() {
 		return classesCourseId;
 	}
-	public void setClassesCourseId(int classesCourseId) {
+	public void setClassesCourseId(Integer classesCourseId) {
 		this.classesCourseId = classesCourseId;
 	}
 	public StudentCourse(int id, int studentId, String content, int x, int y, int len, String weeks,

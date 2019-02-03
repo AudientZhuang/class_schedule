@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zqu.yiban.entity.StudentCourse;
 import com.zqu.yiban.mapper.StudentCourseMapper;
@@ -29,8 +30,28 @@ public class StudentCourseServiceImpl implements StudentCourseService{
 
 
 	@Override
-	public List<StudentCourse> listStudentCourse(int studentId) throws Exception {
+	public List<StudentCourse> listStudentCourse(int studentId) throws Exception{
 		return studentCourseMapper.list("student_id", studentId);
+	}
+
+
+	@Override
+	public Integer delStudentCourse(Integer studentId) {
+		try{
+			return studentCourseMapper.delete("student_id", studentId);
+		}catch(Exception e){
+			return null;
+		}
+	}
+
+
+	@Transactional
+	public Integer addStudentCourse(StudentCourse studentCourse){
+		try{
+			return studentCourseMapper.insert(studentCourse);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }
